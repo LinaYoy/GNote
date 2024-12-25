@@ -1,0 +1,33 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои Заметки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/" class="nav-button">Главная</a></li>
+            <li><a href="/notes" class="nav-button">Все Заметки</a></li>
+        </ul>
+    </nav>
+    
+    {% if message %}
+        <div class="message">{{ message }}</div>
+    {% endif %}
+    
+    <h1>Добавить заметку</h1>
+    <form action="/add_note" method="post">
+        <textarea name="note" placeholder="Введите текст заметки..." required></textarea><br>
+        <select name="category_id" required>
+            <option value="">Выберите категорию</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>

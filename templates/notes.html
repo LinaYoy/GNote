@@ -1,0 +1,22 @@
+<!-- templates/notes.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои Заметки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/" class="nav-button">Главная</a></li>
+            <li><a href="/notes/{{ category.id }}" class="nav-button">Заметки</a></li> <!-- Убедитесь, что здесь правильный URL -->
+        </ul>
+    </nav>
+    
+    <h1>Список заметок</h1>
+    {% for note in notes %}
+        <div class="note">{{ note.content }}</div>  <!-- Здесь выводим содержимое заметки -->
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- templates/all_notes.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Все Заметки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/" class="nav-button">Главная</a></li>
+            <li><a href="/notes" class="nav-button">Все Заметки</a></li>
+        </ul>
+    </nav>
+
+    <h1>Все Заметки</h1>
+    {% if notes %}
+        {% for note in notes %}
+            <div class="note">{{ note.content }}</div>  <!-- Здесь выводим содержимое заметки -->
+        {% endfor %}
+    {% else %}
+        <p>У вас нет заметок.</p>
+    {% endif %}
+</body>
+</html>

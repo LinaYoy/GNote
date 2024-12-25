@@ -1,0 +1,33 @@
+<!-- templates/settings.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки аккаунта</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Настройки аккаунта</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post">
+        <label for="old_password">Текущий пароль:</label>
+        <input type="password" id="old_password" name="old_password" required>
+        
+        <label for="new_password">Новый пароль:</label>
+        <input type="password" id="new_password" name="new_password" required>
+        
+        <label for="confirm_new_password">Подтвердите новый пароль:</label>
+        <input type="password" id="confirm_new_password" name="confirm_new_password" required>
+        
+        <button type="submit">Сменить пароль</button>
+    </form>
+</body>
+</html>
